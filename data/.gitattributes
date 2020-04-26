@@ -1,0 +1,2 @@
+allFlights.csv filter=lfs diff=lfs merge=lfs -text
+flights_2020.csv filter=lfs diff=lfs merge=lfs -text

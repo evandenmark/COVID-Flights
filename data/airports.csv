@@ -1,0 +1,143 @@
+icao,name,city,state,country,lat,long,airportType
+KABQ,Albuquerque International Sunport,Albuquerque,NM,US,35.04,-106.609,large_airport
+KADW,Joint Base Andrews,Camp Springs,MD,US,38.811,-76.867,large_airport
+KAFW,Fort Worth Alliance Airport,Fort Worth,TX,US,32.988,-97.319,large_airport
+KAGS,Augusta Regional At Bush Field,Augusta,GA,US,33.37,-81.965,large_airport
+KAMA,Rick Husband Amarillo International Airport,Amarillo,TX,US,35.219,-101.706,large_airport
+KATL,Hartsfield Jackson Atlanta International Airport,Atlanta,GA,US,33.637,-84.428,large_airport
+KAUS,Austin Bergstrom International Airport,Austin,TX,US,30.194,-97.67,large_airport
+KAVL,Asheville Regional Airport,Asheville,NC,US,35.436,-82.542,large_airport
+KBDL,Bradley International Airport,Hartford,CT,US,41.939,-72.683,large_airport
+KBFI,Boeing Field King County International Airport,Seattle,WA,US,47.53,-122.302,large_airport
+KBGR,Bangor International Airport,Bangor,ME,US,44.807,-68.828,large_airport
+KBHM,Birmingham-Shuttlesworth International Airport,Birmingham,AL,US,33.563,-86.754,large_airport
+KBIL,Billings Logan International Airport,Billings,MT,US,45.808,-108.543,large_airport
+KBLV,Scott AFB/Midamerica Airport,Belleville,IL,US,38.545,-89.835,large_airport
+KBMI,Central Illinois Regional Airport at Bloomington-Normal,Bloomington/Normal,IL,US,40.477,-88.916,large_airport
+KBNA,Nashville International Airport,Nashville,TN,US,36.125,-86.678,large_airport
+KBOI,Boise Air Terminal/Gowen Field,Boise,ID,US,43.564,-116.223,large_airport
+KBOS,General Edward Lawrence Logan International Airport,Boston,MA,US,42.364,-71.005,large_airport
+KBUF,Buffalo Niagara International Airport,Buffalo,NY,US,42.94,-78.732,large_airport
+KBWI,Baltimore/Washington International Thurgood Marshall Airport,Baltimore,MD,US,39.175,-76.668,large_airport
+KCAE,Columbia Metropolitan Airport,Columbia,SC,US,33.939,-81.119,large_airport
+KCHA,Lovell Field,Chattanooga,TN,US,35.035,-85.204,large_airport
+KCID,The Eastern Iowa Airport,Cedar Rapids,IA,US,41.885,-91.711,large_airport
+KCLE,Cleveland Hopkins International Airport,Cleveland,OH,US,41.412,-81.85,large_airport
+KCLT,Charlotte Douglas International Airport,Charlotte,NC,US,35.214,-80.943,large_airport
+KCMH,John Glenn Columbus International Airport,Columbus,OH,US,39.998,-82.892,large_airport
+KCOS,City of Colorado Springs Municipal Airport,Colorado Springs,CO,US,38.806,-104.701,large_airport
+KCRP,Corpus Christi International Airport,Corpus Christi,TX,US,27.77,-97.501,large_airport
+KCRW,Yeager Airport,Charleston,WV,US,38.373,-81.593,large_airport
+KCVG,Cincinnati Northern Kentucky International Airport,Cincinnati,KY,US,39.049,-84.668,large_airport
+KDAB,Daytona Beach International Airport,Daytona Beach,FL,US,29.18,-81.058,large_airport
+KDAL,Dallas Love Field,Dallas,TX,US,32.847,-96.852,large_airport
+KDAY,James M Cox Dayton International Airport,Dayton,OH,US,39.902,-84.219,large_airport
+KDBQ,Dubuque Regional Airport,Dubuque,IA,US,42.402,-90.71,large_airport
+KDCA,Ronald Reagan Washington National Airport,Washington,DC,US,38.852,-77.038,large_airport
+KDEN,Denver International Airport,Denver,CO,US,39.862,-104.673,large_airport
+KDFW,Dallas Fort Worth International Airport,Dallas-Fort Worth,TX,US,32.897,-97.038,large_airport
+KDLF,DLF Airport,Del Rio,TX,US,29.36,-100.778,large_airport
+KDLH,Duluth International Airport,Duluth,MN,US,46.842,-92.194,large_airport
+KDSM,Des Moines International Airport,Des Moines,IA,US,41.534,-93.663,large_airport
+KDTW,Detroit Metropolitan Wayne County Airport,Detroit,MI,US,42.212,-83.353,large_airport
+KERI,Erie International Tom Ridge Field,Erie,PA,US,42.083,-80.174,large_airport
+KEWR,Newark Liberty International Airport,Newark,NJ,US,40.693,-74.169,large_airport
+KFLL,Fort Lauderdale Hollywood International Airport,Fort Lauderdale,FL,US,26.073,-80.153,large_airport
+KFSM,Fort Smith Regional Airport,Fort Smith,AR,US,35.337,-94.367,large_airport
+KFTW,Fort Worth Meacham International Airport,Fort Worth,TX,US,32.82,-97.362,large_airport
+KFWA,Fort Wayne International Airport,Fort Wayne,IN,US,40.979,-85.195,large_airport
+KGEG,Spokane International Airport,Spokane,WA,US,47.62,-117.534,large_airport
+KGPT,Gulfport Biloxi International Airport,Gulfport,MS,US,30.407,-89.07,large_airport
+KGRB,Austin Straubel International Airport,Green Bay,WI,US,44.485,-88.13,large_airport
+KGSO,Piedmont Triad International Airport,Greensboro,NC,US,36.098,-79.937,large_airport
+KGSP,Greenville Spartanburg International Airport,Greenville,SC,US,34.896,-82.219,large_airport
+KGUS,Grissom Air Reserve Base,Peru,IN,US,40.648,-86.152,large_airport
+KHIB,Range Regional Airport,Hibbing,MN,US,47.387,-92.839,large_airport
+KHOU,William P Hobby Airport,Houston,TX,US,29.645,-95.279,large_airport
+KHSV,Huntsville International Carl T Jones Field,Huntsville,AL,US,34.637,-86.775,large_airport
+KHTS,Tri-State/Milton J. Ferguson Field,Huntington,WV,US,38.367,-82.558,large_airport
+KIAD,Washington Dulles International Airport,Washington,DC,US,38.944,-77.456,large_airport
+KIAH,George Bush Intercontinental Houston Airport,Houston,TX,US,29.984,-95.341,large_airport
+KICT,Wichita Eisenhower National Airport,Wichita,KS,US,37.65,-97.433,large_airport
+KIND,Indianapolis International Airport,Indianapolis,IN,US,39.717,-86.294,large_airport
+KJAN,Jackson-Medgar Wiley Evers International Airport,Jackson,MS,US,32.311,-90.076,large_airport
+KJAX,Jacksonville International Airport,Jacksonville,FL,US,30.494,-81.688,large_airport
+KJFK,John F Kennedy International Airport,New York,NY,US,40.64,-73.779,large_airport
+KJLN,Joplin Regional Airport,Joplin,MO,US,37.152,-94.498,large_airport
+KLAS,McCarran International Airport,Las Vegas,NV,US,36.08,-115.152,large_airport
+KLAX,Los Angeles International Airport,Los Angeles,CA,US,33.943,-118.408,large_airport
+KLBB,Lubbock Preston Smith International Airport,Lubbock,TX,US,33.664,-101.823,large_airport
+KLCK,Rickenbacker International Airport,Columbus,OH,US,39.814,-82.928,large_airport
+KLEX,Blue Grass Airport,Lexington,KY,US,38.036,-84.606,large_airport
+KLFT,Lafayette Regional Airport,Lafayette,LA,US,30.205,-91.988,large_airport
+KLGA,La Guardia Airport,New York,NY,US,40.777,-73.873,large_airport
+KLIT,Bill & Hillary Clinton National Airport/Adams Field,Little Rock,AR,US,34.729,-92.224,large_airport
+KMBS,MBS International Airport,Saginaw,MI,US,43.533,-84.08,large_airport
+KMCI,Kansas City International Airport,Kansas City,MO,US,39.298,-94.714,large_airport
+KMCO,Orlando International Airport,Orlando,FL,US,28.429,-81.309,large_airport
+KMDW,Chicago Midway International Airport,Chicago,IL,US,41.786,-87.752,large_airport
+KMEM,Memphis International Airport,Memphis,TN,US,35.042,-89.977,large_airport
+KMGE,Dobbins Air Reserve Base,Marietta,GA,US,33.915,-84.516,large_airport
+KMGM,Montgomery Regional (Dannelly Field) Airport,Montgomery,AL,US,32.301,-86.394,large_airport
+KMHT,Manchester-Boston Regional Airport,Manchester,NH,US,42.933,-71.436,large_airport
+KMIA,Miami International Airport,Miami,FL,US,25.793,-80.291,large_airport
+KMKE,General Mitchell International Airport,Milwaukee,WI,US,42.947,-87.897,large_airport
+KMLI,Quad City International Airport,Moline,IL,US,41.449,-90.507,large_airport
+KMLU,Monroe Regional Airport,Monroe,LA,US,32.511,-92.038,large_airport
+KMOB,Mobile Regional Airport,Mobile,AL,US,30.691,-88.243,large_airport
+KMSN,Dane County Regional Truax Field,Madison,WI,US,43.14,-89.338,large_airport
+KMSP,Minneapolis-St Paul International/Wold-Chamberlain Airport,Minneapolis,MN,US,44.882,-93.222,large_airport
+KMSY,Louis Armstrong New Orleans International Airport,New Orleans,LA,US,29.993,-90.258,large_airport
+KOAK,Metropolitan Oakland International Airport,Oakland,CA,US,37.721,-122.221,large_airport
+KOKC,Will Rogers World Airport,Oklahoma City,OK,US,35.393,-97.601,large_airport
+KOMA,Eppley Airfield,Omaha,NE,US,41.303,-95.894,large_airport
+KONT,Ontario International Airport,Ontario,CA,US,34.056,-117.601,large_airport
+KORD,Chicago O'Hare International Airport,Chicago,IL,US,41.979,-87.905,large_airport
+KORF,Norfolk International Airport,Norfolk,VA,US,36.895,-76.201,large_airport
+KPBI,Palm Beach International Airport,West Palm Beach,FL,US,26.683,-80.096,large_airport
+KPDX,Portland International Airport,Portland,OR,US,45.589,-122.598,large_airport
+KPHF,Newport News Williamsburg International Airport,Newport News,VA,US,37.132,-76.493,large_airport
+KPHL,Philadelphia International Airport,Philadelphia,PA,US,39.872,-75.241,large_airport
+KPHX,Phoenix Sky Harbor International Airport,Phoenix,AZ,US,33.434,-112.012,large_airport
+KPIA,General Wayne A. Downing Peoria International Airport,Peoria,IL,US,40.664,-89.693,large_airport
+KPIT,Pittsburgh International Airport,Pittsburgh,PA,US,40.492,-80.233,large_airport
+KPVD,Theodore Francis Green State Airport,Providence,RI,US,41.733,-71.42,large_airport
+KPWM,Portland International Jetport,Portland,ME,US,43.646,-70.309,large_airport
+KRDU,Raleigh Durham International Airport,Raleigh/Durham,NC,US,35.878,-78.787,large_airport
+KRFD,Chicago Rockford International Airport,Chicago/Rockford,IL,US,42.195,-89.097,large_airport
+KRIC,Richmond International Airport,Richmond,VA,US,37.505,-77.32,large_airport
+KRNO,Reno Tahoe International Airport,Reno,NV,US,39.499,-119.768,large_airport
+KROA,Roanoke–Blacksburg Regional Airport,Roanoke,VA,US,37.325,-79.975,large_airport
+KROC,Greater Rochester International Airport,Rochester,NY,US,43.119,-77.672,large_airport
+KRST,Rochester International Airport,Rochester,MN,US,43.908,-92.5,large_airport
+KRSW,Southwest Florida International Airport,Fort Myers,FL,US,26.536,-81.755,large_airport
+KSAN,San Diego International Airport,San Diego,CA,US,32.734,-117.19,large_airport
+KSAT,San Antonio International Airport,San Antonio,TX,US,29.534,-98.47,large_airport
+KSAV,Savannah Hilton Head International Airport,Savannah,GA,US,32.128,-81.202,large_airport
+KSBN,South Bend Regional Airport,South Bend,IN,US,41.709,-86.317,large_airport
+KSDF,Louisville Muhammad Ali International Airport,Louisville,KY,US,38.174,-85.736,large_airport
+KSEA,Seattle Tacoma International Airport,Seattle,WA,US,47.449,-122.309,large_airport
+KSFB,Orlando Sanford International Airport,Orlando,FL,US,28.778,-81.238,large_airport
+KSFO,San Francisco International Airport,San Francisco,CA,US,37.619,-122.375,large_airport
+KSGF,Springfield Branson National Airport,Springfield,MO,US,37.246,-93.389,large_airport
+KSJC,Norman Y. Mineta San Jose International Airport,San Jose,CA,US,37.363,-121.929,large_airport
+KSLC,Salt Lake City International Airport,Salt Lake City,UT,US,40.788,-111.978,large_airport
+KSMF,Sacramento International Airport,Sacramento,CA,US,38.695,-121.591,large_airport
+KSNA,John Wayne Airport-Orange County Airport,Santa Ana,CA,US,33.676,-117.868,large_airport
+KSPI,Abraham Lincoln Capital Airport,Springfield,IL,US,39.844,-89.678,large_airport
+KSRQ,Sarasota Bradenton International Airport,Sarasota/Bradenton,FL,US,27.395,-82.554,large_airport
+KSTL,St Louis Lambert International Airport,St Louis,MO,US,38.749,-90.37,large_airport
+KSUS,Spirit of St Louis Airport,St Louis,MO,US,38.662,-90.652,large_airport
+KSUX,Sioux Gateway Airport/Brigadier General Bud Day Field,Sioux City,IA,US,42.403,-96.384,large_airport
+KSYR,Syracuse Hancock International Airport,Syracuse,NY,US,43.111,-76.106,large_airport
+KTLH,Tallahassee Regional Airport,Tallahassee,FL,US,30.396,-84.35,large_airport
+KTOL,Toledo Express Airport,Toledo,OH,US,41.587,-83.808,large_airport
+KTPA,Tampa International Airport,Tampa,FL,US,27.976,-82.533,large_airport
+KTRI,Tri-Cities Regional TN/VA Airport,Bristol/Johnson/Kingsport,TN,US,36.475,-82.407,large_airport
+KTUL,Tulsa International Airport,Tulsa,OK,US,36.198,-95.888,large_airport
+KTUS,Tucson International Airport,Tucson,AZ,US,32.116,-110.941,large_airport
+KTYS,McGhee Tyson Airport,Knoxville,TN,US,35.811,-83.994,large_airport
+KVPS,Destin-Ft Walton Beach Airport,Valparaiso,FL,US,30.483,-86.525,large_airport
+PAFA,Fairbanks International Airport,Fairbanks,AK,US,64.815,-147.856,large_airport
+PANC,Ted Stevens Anchorage International Airport,Anchorage,AK,US,61.174,-149.996,large_airport
+PHNL,Daniel K Inouye International Airport,Honolulu,HI,US,21.321,-157.924,large_airport

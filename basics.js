@@ -1,0 +1,56 @@
+//global data variables
+var flightDataJan;
+var flightDataFeb;
+var flightDataMar;
+var airportData;
+var processedFlights;
+var airportMap;
+var airportStateMap;
+var airportCityMap;
+let excludedStates = ['AK', 'HI'];
+var currentWeek =1;
+var globalLinks;
+var maxTrafficPerAirport = new Map();
+var maxTrafficPerAirport_jetblue = new Map();
+var maxTrafficPerAirport_american = new Map();
+var maxTrafficPerAirport_delta = new Map();
+var maxTrafficPerAirport_united = new Map();
+var maxTrafficPerAirport_southwest = new Map();
+var maxTrafficPerAirport_spirit = new Map();
+var maxTrafficPerAirport_frontier = new Map();
+
+var maxTrafficPerRoute = new Map();
+var maxTrafficPerRoute_jetblue = new Map();
+var maxTrafficPerRoute_southwest = new Map();
+var maxTrafficPerRoute_american = new Map();
+var maxTrafficPerRoute_delta = new Map();
+var maxTrafficPerRoute_united = new Map();
+var maxTrafficPerRoute_spirit = new Map();
+var maxTrafficPerRoute_frontier = new Map();
+
+var totalTrafficPerAirline = new Map();
+
+var deltaFlights;
+var jetblueFlights;
+var unitedFlights;
+var southwestFlights;
+var americanFlights;
+var spiritFlights;
+var frontierFlights;
+let airlineRouteColors = new Map([['All', '#266Ad9'],['Delta', '#003268'], ['JetBlue', '#003876'], ['United', '#005DAA'], ['Southwest', '#3453c4'], ['American', '#07a3dc'], ['Spirit', '#080808'], ['Frontier', '#248168']]);
+let airlineAirportColors = new Map([['All', '#FFB153'],['Delta', '#E3132C'], ['JetBlue', '#A4F0C4'], ['United', '#cccccc'], ['Southwest', '#F9B612'], ['American', '#003268'], ['Spirit', '#fcff2c'], ['Frontier', '#9F9A98']]);
+var currentAirline = 'All';
+var jetblueAirportMax;
+var unitedAirportMax;
+var southwestAirportMax;
+var americanAirportMax;
+var deltaAirportMax;
+var spiritAirportMax;
+var frontierAirportMax;
+var jetblueRoutesMax;
+var unitedRoutesMax;
+var southwestRoutesMax;
+var americanRoutesMax;
+var deltaRoutesMax;
+var spiritRoutesMax;
+var frontierRoutesMax;

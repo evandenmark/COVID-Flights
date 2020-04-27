@@ -54,3 +54,9 @@ var americanRoutesMax;
 var deltaRoutesMax;
 var spiritRoutesMax;
 var frontierRoutesMax;
+var majorAirportThreshold = 0;
+var majorAirports;
+
+var currentTranslation = [0,0];
+var currentScale = 1;
+var currentSelectedAirport = '';

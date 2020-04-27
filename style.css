@@ -1,28 +1,22 @@
-#myCheckbox{
-	margin-top: 20%;
-}
-
-#large-container {
+#title {
+	font-family: 'Zilla Slab', serif;
 	text-align: center;
 }
 
-#topLeft{
-	width: 15%;
+#myCheckbox{
+	
+}
+
+.column{
 	float: left;
 }
 
-#topCenter{
-	float:left;
+#middle-column{
+	width: 95%;
 }
 
-#topRight{
-	width: 15%;
-	float:right;
-}
-
-#slider-container{
-	transform: rotate(90deg);
-	margin-top: 70%;
+#right-column, #left-column{
+	width: 0%;
 }
 
 #slider {
@@ -56,6 +50,8 @@
   cursor: pointer;
 }
 
-#airlines{
-	margin-top: 20%;
+#slider-container, #dropdown-container, #checkbox-container, #title {
+	float: left;
+	width: 25%;
+	text-align: center;
 }

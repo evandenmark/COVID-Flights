@@ -1,29 +1,30 @@
 <head>	
   <link href="./style.css" rel="stylesheet" type="text/css">	
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div id=large-container>
-		<div id = "top">
-			<div id = "topLeft">
-				<div id='charts'>Charts go here</div>
-			</div>
-			<div id = "topCenter"></div>
-			<div id = "topRight">
+		<div id = "middle-column" class=column>
+			<div id = top-bar>
+				<div id=title>
+					<h1>The Airline Collapse</h1>
+					<p>How COVID-19 is shaking up the skies</p>
+				</div>
 				<p>Weeks After January 1st</p>
-				<div class="row align-items-center">
-				    <div ><p id="value-vertical"></p></div>
-				    <div ><div id="slider-vertical"></div></div>
+				<div class="row align-items-center" id=slider-container>
+				    <div class="col-sm-2"><p id="value-step"></p></div>
+				    <div class="col-sm"><div id="slider-step"></div></div>
 				</div>
-				<input type="checkbox" id="myCheckbox"> Major Airports Only
-				<div id=airlines>
-					<p><u>Airlines</u></p>
-					<div id="dropdown-container"></div>
-				</div>
-			</div>
-			
-		</div>
-		<div id = "bottom">
+				<div id = checkbox-container><input type="checkbox" id="myCheckbox"> Major Airports Only</div>
+				<div id="dropdown-container"></div>
+				
 
+			</div>
+			<div id = mapSvg> 
+			</div>
+		</div>
+		<div id = "right-column" class=column>
+			
 		</div>
 	</div>
 <script src="//d3js.org/d3.v5.min.js"></script>

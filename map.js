@@ -168,7 +168,7 @@ function dropdownSelect(){
 //HELPER FUNCTIONS
 
 function drawAirports(){
-	circles = mapSvg.selectAll(".airports")
+	airportRects = mapSvg.selectAll(".airports")
 					.data(
 						  largeAirportsOnly(
 						  getUSairports(
@@ -205,10 +205,10 @@ function drawAirports(){
 							q = mapHeight/2 - this.height.baseVal.value ;
 						}
 						return "translate(" + r +','+q + ")";})
-					.append("title")
-					.text(d => d.name + '\n' + d.city +'\n' +
-						getTotalAirportTraffic(d.icao, currentWeek) + ' / ' + getMaxTrafficPerAirport(d.icao) + '\n'+
-						Math.round(100*getTotalAirportTraffic(d.icao, currentWeek)/getMaxTrafficPerAirport(d.icao)) +'% capacity');
+						.append("title")
+						.text(d => d.name + '\n' + d.city +'\n' +
+								getTotalAirportTraffic(d.icao, currentWeek) + ' / ' + getMaxTrafficPerAirport(d.icao) + '\n'+
+								Math.round(100*getTotalAirportTraffic(d.icao, currentWeek)/getMaxTrafficPerAirport(d.icao)) +'% capacity');
 
 	if (currentScope == zoomScope.AIRPORT){
 
@@ -242,15 +242,22 @@ function drawRoutes(){
 	                .attr("transform", 'translate('+ currentTranslation +')scale('+currentScale+')')
 	                .append("title")
 					.text(d => airportCityMap.get(d.start) + ' - ' + d.start + '\n' 
-								+ airportCityMap.get(d.end)+ ' - ' +d.end +'\n' 
-								+ d.weight + ' / ' + getMaxTrafficPerRoute(d.start+"-"+d.end) + '\n'
-								+ Math.round(100*d.weight/getMaxTrafficPerRoute(d.start+"-"+d.end)) + "%");
+						+ airportCityMap.get(d.end)+ ' - ' +d.end +'\n' 
+						+ d.weight + ' / ' + getMaxTrafficPerRoute(d.start+"-"+d.end) + '\n'
+						+ Math.round(100*d.weight/getMaxTrafficPerRoute(d.start+"-"+d.end)) + "%");
 
 }
 
 function filterAirportsIfAirportClicked(data){
 	if (currentScope == zoomScope.AIRPORT){
 		return getSpecificAirport(data, currentSelectedAirport);
+	}
+	return data;
+}
+
+function filterRoutesIfAirportClicked(data){
+	if (currentScope == zoomScope.AIRPORT){
+		return getSpecificAirportTraffic(data, currentSelectedAirport);
 	}
 	return data;
 }
@@ -289,7 +296,11 @@ function airportClicked(d){
     		.attr("transform", x => "translate(" + [2*mapWidth/3, mapHeight/2 - currentScale*10000*getTotalAirportTraffic(d.icao, currentWeek)/(totalTrafficPerAirline.get(currentAirline))]+ ")scale(" + currentScale + ")");
 
     currentScope = zoomScope.AIRPORT;
-    currentSelectedAirport = d.icao;	
+    currentSelectedAirport = d.icao;
+
+    globalLinks = getCurrentLinks();
+    setTimeout(drawRoutes, 750);
+
 }
 
 function transpBoxClicked(){
@@ -310,14 +321,19 @@ function transpBoxClicked(){
     		
     box.remove();
 
-    mapSvg.selectAll('.airports').remove();
-
     currentScope = zoomScope.COUNTRY;
     currentSelectedAirport = '';
 
+    mapSvg.selectAll('.airports').remove();
+	globalLinks = getCurrentLinks();
+
+    setTimeout(waitAndDraw, 750);
+}
+
+function waitAndDraw(){
+	
+    drawRoutes();
     drawAirports();
-
-
 }
 
 function setMaxTrafficMapPerAirport(data, specificMap){
@@ -507,8 +523,9 @@ function getCurrentLinks(){
 	}
 
 	return processLinks(
+		filterRoutesIfAirportClicked(
 		filterMajorAirportRoutes(
-		filterFlightsStates(temporalFilter(flight_data, currentWeek))));
+		filterFlightsStates(temporalFilter(flight_data, currentWeek)))));
 }
 
 function filterMajorAirportRoutes(data){

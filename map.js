@@ -8,6 +8,12 @@ const zoomScope = {
 	AIRPORT: 'airport'
 } 
 
+const toggleMode = {
+	ROUTE : 'route',
+	AIRPORT: 'airport'
+} 
+currentToggleMode = toggleMode.AIRPORT;
+
 let currentScope = zoomScope.COUNTRY;
 
 USA_SCALE = 2000;
@@ -65,11 +71,7 @@ d3.json("./countryShapeData/us.json").then(function(topology){
 						//max traffic maps
 						setMaxTrafficMapPerAirport(max_data, maxTrafficPerAirport);
 
-						globalLinks = getCurrentLinks();
-						drawRoutes();
-
-						//airport points
-						drawAirports();
+						drawRoutesAndAirports()
 
 						//draw graphic
 						drawGraphic(getTotalWeeklyTraffic(currentWeek), Math.round(100*getTotalWeeklyTraffic(currentWeek)/getTotalMaxTraffic()));
@@ -90,17 +92,9 @@ function toggleMajorAirports(){
 		majorAirportThreshold = 4000;
 	}
 
-	//routes
-    globalLinks = getCurrentLinks();
-    mapSvg.selectAll(".routes").remove();
-    drawRoutes();
-
-    //airports
-    mapSvg.selectAll(".airports").remove();
-    drawAirports();
-
+	drawRoutesAndAirports()
+	
     drawGraphic(getTotalWeeklyTraffic(currentWeek), Math.round(100*getTotalWeeklyTraffic(currentWeek)/getTotalMaxTraffic()));
-
 }
 
 
@@ -109,7 +103,7 @@ function toggleMajorAirports(){
 var sliderStep = d3
     .sliderBottom()
     .min(1)
-    .max(14)
+    .max(18)
     .width(300)
     .ticks(5)
     .step(1)
@@ -121,14 +115,7 @@ var sliderStep = d3
 
 			updateWeek(week);
 
-			//routes
-			globalLinks = getCurrentLinks();
-			mapSvg.selectAll(".routes").remove();
-			drawRoutes();
-
-			//airports
-			mapSvg.selectAll(".airports").remove();
-			drawAirports();
+			drawRoutesAndAirports();
 
 			if (currentScope == zoomScope.AIRPORT){
 				mapSvg.selectAll(".citychart").remove();
@@ -154,6 +141,88 @@ var sliderStep = d3
 
 
 
+//ROUTES-AIRPORT TOGGLE
+var buttonWidth = 0.05*mapWidth
+
+buttonToggle = mapSvg.append("g")
+					.attr('transform', 'translate(' + 0.45*mapWidth + ',' + 0.07*mapHeight + ')')
+
+airportRect = buttonToggle.append("rect")
+		.attr('transform', 'translate(0,0)')
+		.attr("class", "toggleRectClick")
+		.attr("width", buttonWidth)
+		.attr("height", buttonWidth*0.5)
+		.on("click", function(){
+			if (currentToggleMode == toggleMode.AIRPORT){
+				d3.select(this).attr("class", "toggleRect");
+				currentToggleMode = toggleMode.ROUTE;
+				routeRect.attr("class", "toggleRectClick")
+			} else {
+				d3.select(this).attr("class", "toggleRectClick");
+				currentToggleMode = toggleMode.AIRPORT;
+				routeRect.attr("class", "toggleRect")
+			}
+			drawRoutesAndAirports();
+		})
+
+routeRect = buttonToggle.append("rect")
+		.attr('transform', 'translate('+buttonWidth+',0)')
+		.attr("class", "toggleRect")
+		.attr("width", buttonWidth)
+		.attr("height", buttonWidth*0.5)
+		.on("click", function(){
+			if (currentToggleMode == toggleMode.ROUTE){
+				d3.select(this).attr("class", "toggleRect");
+				currentToggleMode = toggleMode.AIRPORT;
+				airportRect.attr("class", "toggleRectClick")
+			} else {
+				d3.select(this).attr("class", "toggleRectClick");
+				currentToggleMode = toggleMode.ROUTE;
+				airportRect.attr("class", "toggleRect")
+			}
+			drawRoutesAndAirports();
+		})
+
+buttonToggle.append('text')
+		.attr('transform', 'translate('+0.5*buttonWidth+','+0.225*buttonWidth+')')
+		.attr("text-anchor", "middle")
+		.attr("dominant-baseline", "central") 
+		.attr("class", "buttonText")
+		.text('Airports')
+		.on("click", function(){
+			if (currentToggleMode == toggleMode.AIRPORT){
+				airportRect.attr("class", "toggleRect");
+				currentToggleMode = toggleMode.ROUTE;
+				routeRect.attr("class", "toggleRectClick")
+			} else {
+				airportRect.attr("class", "toggleRectClick");
+				currentToggleMode = toggleMode.AIRPORT;
+				routeRect.attr("class", "toggleRect")
+			}
+			drawRoutesAndAirports();
+		})
+
+buttonToggle.append('text')
+		.attr('transform', 'translate('+1.5*buttonWidth+','+0.225*buttonWidth+')')
+		.attr("text-anchor", "middle")
+		.attr("dominant-baseline", "central") 
+		.attr("class", "buttonText")
+		.text('Routes')
+		.on("click", function(){
+			if (currentToggleMode == toggleMode.AIRPORT){
+				airportRect.attr("class", "toggleRect");
+				currentToggleMode = toggleMode.ROUTE;
+				routeRect.attr("class", "toggleRectClick")
+			} else {
+				airportRect.attr("class", "toggleRectClick");
+				currentToggleMode = toggleMode.AIRPORT;
+				routeRect.attr("class", "toggleRect")
+			}
+			drawRoutesAndAirports();
+		});
+
+
+
 //DROPDOWN
 var airlines = ['All','American', 'Delta', 'JetBlue', 'Southwest', 'United', 'Spirit', 'Frontier'];
 
@@ -167,17 +236,11 @@ dropdownButton.selectAll('option') // Next 4 lines add 6 options = 6 colors
 
 function dropdownSelect(){
 	currentAirline = this.value;
-	//routes
-	  globalLinks = getCurrentLinks();
-	  mapSvg.selectAll(".routes").remove();
-	  drawRoutes();
+	
+	drawRoutesAndAirports();
 
-	  //airports
-	  mapSvg.selectAll(".airports").remove();
-	  drawAirports();
-
-	  //graphic
-	  drawGraphic(getTotalWeeklyTraffic(currentWeek), Math.round(100*getTotalWeeklyTraffic(currentWeek)/getTotalMaxTraffic()));
+	//graphic
+	drawGraphic(getTotalWeeklyTraffic(currentWeek), Math.round(100*getTotalWeeklyTraffic(currentWeek)/getTotalMaxTraffic()));
 
 }
 
@@ -186,7 +249,7 @@ function dropdownSelect(){
 //HELPER FUNCTIONS
 
 function drawAirports(){
-	airportRects = mapSvg.selectAll(".airports")
+	airportG = mapSvg.selectAll(".airports")
 					.data(
 						  largeAirportsOnly(
 						  getUSairports(
@@ -213,6 +276,7 @@ function drawAirports(){
 					.on("click", airportClicked)
 			    	.attr('id', d=> d.icao)
 					.attr('fill', airlineAirportColors.get(currentAirline))
+					.attr('opacity', 0.7)
 					.attr('stroke', "#000000")
 					.attr("transform", function(d) {
 						var p = projection([d.long, d.lat]);
@@ -227,6 +291,29 @@ function drawAirports(){
 						.text(d => d.name + '\n' + d.city +'\n' +
 								getTotalAirportTraffic(d.icao, currentWeek) + ' / ' + getMaxTrafficPerAirport(d.icao) + ' flights \n'+
 								Math.round(100*getTotalAirportTraffic(d.icao, currentWeek)/getMaxTrafficPerAirport(d.icao)) +'% of normal');
+
+	labels = mapSvg.selectAll(".label")
+					.data(
+						  largeAirportsOnly(
+						  getUSairports(
+						  filterAirportsIfAirportClicked(
+						  getAirportsExcludingStates(airportData)))))
+					.append("text")
+					.attr("transform", function(d) {
+						var p = projection([d.long, d.lat]);
+						var q = p[1] - 10000*getTotalAirportTraffic(d.icao, currentWeek)/(totalTrafficPerAirline.get(currentAirline)) ;
+						var r = p[0] - 7 ;
+						if (currentScope == zoomScope.AIRPORT){
+							r = 2*mapWidth/3;
+							q = mapHeight/2 - 10000*getTotalAirportTraffic(d.icao, currentWeek)/(totalTrafficPerAirline.get(currentAirline)) ;
+						}
+						return "translate(" + r +','+q + ")";})
+					.attr("class", "label")
+					.text("Hello");
+
+	console.log(labels)
+
+
 
 	if (currentScope == zoomScope.AIRPORT){
 
@@ -254,9 +341,9 @@ function drawRoutes(){
 	                .attr("class", "routes")
 	                .attr("fill", "none")
 	                .attr("stroke", airlineRouteColors.get(currentAirline))
-	                .attr("stroke-width", 5)
+	                .attr("stroke-width", 3)
 	                .attr("stroke-opacity", function(d){
-	                	return d.weight/getMaxTrafficPerRoute(d.start+"-"+d.end)})
+	                	return d.weight*0.005})
 	                .attr("transform", 'translate('+ currentTranslation +')scale('+currentScale+')')
 	                .append("title")
 					.text(d => airportCityMap.get(d.start) + ' - ' + d.start + '\n' 
@@ -356,7 +443,7 @@ function drawCityChart(){
 	//create data
     var xAxis = new Array();
     var yAxis = new Array();
-    for (var i = 1; i <= 14; i++) {
+    for (var i = 1; i <= 18; i++) {
 	   xAxis.push(i);
 	}
 
@@ -454,13 +541,29 @@ function transpBoxClicked(){
     mapSvg.selectAll('.airports').remove();
 	globalLinks = getCurrentLinks();
 
-    setTimeout(waitAndDraw, 750);
+    setTimeout(drawRoutesAndAirports, 750);
 }
 
 function waitAndDraw(){
 	
     drawRoutes();
     drawAirports();
+}
+
+function drawRoutesAndAirports(){
+
+	if (currentToggleMode == toggleMode.AIRPORT){
+		//airports
+		mapSvg.selectAll(".airports").remove();
+		mapSvg.selectAll(".routes").remove();
+		drawAirports();
+	}else{
+		//routes
+		globalLinks = getCurrentLinks();
+		mapSvg.selectAll(".airports").remove();
+		mapSvg.selectAll(".routes").remove();
+		drawRoutes();
+	}
 }
 
 function setMaxTrafficMapPerAirport(data, specificMap){

@@ -15,6 +15,28 @@
 	fill: white;
 }
 
+.buttonText{
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+	fill: black;
+}
+
+.lable {
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+	fill: black;
+}
+
+.toggleRect{
+	fill: #cccccc;
+	stroke: black;
+}
+
+.toggleRectClick{
+	fill: #F9F8F8;
+	stroke: black;
+}
+
 #myCheckbox{
 	
 }

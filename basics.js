@@ -38,7 +38,7 @@ var americanFlights;
 var spiritFlights;
 var frontierFlights;
 let airlineRouteColors = new Map([['All', '#266Ad9'],['Delta', '#003268'], ['JetBlue', '#003876'], ['United', '#005DAA'], ['Southwest', '#3453c4'], ['American', '#07a3dc'], ['Spirit', '#080808'], ['Frontier', '#248168']]);
-let airlineAirportColors = new Map([['All', '#FFB153'],['Delta', '#E3132C'], ['JetBlue', '#A4F0C4'], ['United', '#cccccc'], ['Southwest', '#F9B612'], ['American', '#003268'], ['Spirit', '#fcff2c'], ['Frontier', '#9F9A98']]);
+let airlineAirportColors = new Map([['All', '#e80707'],['Delta', '#E3132C'], ['JetBlue', '#A4F0C4'], ['United', '#cccccc'], ['Southwest', '#F9B612'], ['American', '#003268'], ['Spirit', '#fcff2c'], ['Frontier', '#9F9A98']]);
 var currentAirline = 'All';
 var jetblueAirportMax;
 var unitedAirportMax;

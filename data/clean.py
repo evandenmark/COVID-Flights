@@ -1,4 +1,5 @@
 import csv
+import math
 
 #AIRPORTS
 airportDB = './airports_2020.csv'
@@ -142,10 +143,10 @@ def main():
 			flightOrder.append(newFlight)
 
 
-	# print("processing flights")
+	print("processing flights")
 	week = 1
 	flightLog[week] = {}
-	day = 0
+	day = 3
 	lastDay = None
 	for flight in flightOrder:
 		#domestic flights
@@ -166,9 +167,11 @@ def main():
 
 			if lastDay == None or lastDay != flightDate:
 				day+=1
+				# print str(day) + "  "+str(flightDate)
 				lastDay = flightDate
 				if day%7 == 0:
 					week+=1
+				# print str(day) + "  "+ str(week) + "  "+str(flightDate)
 
 			#global flight log
 			if week not in flightLog:
@@ -183,7 +186,7 @@ def main():
 				flightLog[week][origin][dest] += 1 
 
 
-			### AIRLINE SPECIFIC
+	# 		### AIRLINE SPECIFIC
 
 			if airline == "JBU":
 				#Jetblue
@@ -275,10 +278,11 @@ def main():
 					frFlightLog[week][origin][dest] = 1
 				else:
 					frFlightLog[week][origin][dest] += 1 
+	# flightLog.pop(0)
 
 
-	##### MAX TRAFFIC
-	#for airports
+	# ##### MAX TRAFFIC
+	# #for airports
 	for icao in sorted(airportDict):
 		maxTrafficAirportDict[icao] = findAirportMaxTraffic(icao, flightLog);
 		jetBlueMaxTrafficAirportDict[icao] = findAirportMaxTraffic(icao, jbFlightLog);
@@ -290,7 +294,7 @@ def main():
 		frontierMaxTrafficAirportDict[icao] = findAirportMaxTraffic(icao, frFlightLog);
 
 
-	#for routes
+	# #for routes
 	for origin in relevantAirports:
 		for dest in relevantAirports:
 			originDestPairMax = 0
@@ -736,6 +740,202 @@ def testAFB():
 	print "BOSTON"
 	print isAirForceBase("KBOS")
 
+def isDomestic(flight):
+	return flight.origin in airportDict and airportDict[flight.origin].country == 'US' and flight.destination in airportDict and airportDict[flight.destination].country == 'US'
+
+totalFlightLog = {}
+def printTotalWeeklyFlights():
+
+	week = 1
+	totalFlightLog[week] = 0
+	day = 0
+	lastDay = None
+	for flight in flightOrder:
+
+		flightDate = flight.departureDate
+		origin = flight.origin
+		dest = flight.destination
+		airline = flight.airline
+
+		if isDomestic(flight) and isLargeAirport(origin) and isLargeAirport(dest):
+
+			if lastDay == None or lastDay != flightDate:
+				day+=1
+				lastDay = flightDate
+				if day%7 == 0:
+					week+=1
+
+			if week not in totalFlightLog:
+				totalFlightLog[week] = 0
+
+			if origin != dest:
+				totalFlightLog[week]+=1
+
+	print totalFlightLog
+
+def printLeadingAirlines(specificWeek):
+	
+	week = 1
+	airlineDict = {}
+	day = 0
+	lastDay = None
+	for flight in flightOrder:
+
+		flightDate = flight.departureDate
+		origin = flight.origin
+		dest = flight.destination
+		airline = flight.airline
+
+
+		if lastDay == None or lastDay != flightDate:
+			day+=1
+			lastDay = flightDate
+			if day%7 == 0:
+				week+=1
+
+		if week == specificWeek:
+
+			if airline not in airlineDict:
+				airlineDict[airline] = 0
+			else:
+				airlineDict[airline] += 1
+
+	print getTopTen(airlineDict)
+
+def getTopTen(d):
+	newDict = {}
+
+	numKeySearched = 0
+	tenthMinVal = 100000000000
+	tenthMinKey = None
+	for key in d:
+		if numKeySearched < 10:
+			newDict[key] = d[key]
+			tenthMinKey = minOfDict(newDict)
+			tenthMinVal = newDict[tenthMinKey]
+			numKeySearched +=1
+		else:
+			if d[key] > tenthMinVal:
+				newDict.pop(tenthMinKey)
+				newDict[key] = d[key]
+				tenthMinKey = minOfDict(newDict)
+				tenthMinVal = newDict[tenthMinKey]
+	return newDict
+
+def minOfDict(d):
+	minVal = 1000000000
+	minKey = None
+	for k in d:
+		if d[k] < minVal:
+			minKey = k
+			minVal = d[k]
+	return minKey
+
+
+def distanceBetweenTwoPoints(loc1, loc2):
+	R = 6373.0
+
+	lat1 = math.radians(loc1[0])
+	lon1 = math.radians(loc1[1])
+	lat2 = math.radians(loc2[0])
+	lon2 = math.radians(loc2[1])
+
+	dlon = lon2 - lon1
+	dlat = lat2 - lat1
+
+	a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+	c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+	distance = R * c
+
+	return distance*0.621 #in kms
+
+
+def getMostPopularRoutes():
+	top3Routes = {}
+	minRoute = None
+	minRouteVal = 10000000000000
+	for route in maxTrafficRouteDict:
+		if len(top3Routes) < 10:
+			top3Routes[route] = maxTrafficRouteDict[route]
+			if maxTrafficRouteDict[route] < minRouteVal:
+				minRouteVal = maxTrafficRouteDict[route]
+				minRoute = route
+		else:
+			if maxTrafficRouteDict[route] > minRouteVal:
+				top3Routes.pop(minRoute)
+				top3Routes[route] = maxTrafficRouteDict[route]
+				minRoute = minOfDict(top3Routes)
+				minRouteVal = top3Routes[minRoute]
+	print combineKeys(top3Routes)
+	return combineKeys(top3Routes)
+
+def combineKeys(d):
+	removals = []
+	for k in d:
+		start = k[0]
+		end = k[1]
+		if (end, start) in d:
+			d[k] += d[(end, start)]
+			if (start, end) not in removals:
+				removals.append((end,start))
+	for r in removals:
+		d.pop(r)
+	return d
+
+def percentOfFlightsOverXMiles(specificWeek, miles):
+	totalFlights = 0
+	flightsOverThreshold = 0
+	week = 1
+	airlineDict = {}
+	day = 0
+	lastDay = None
+
+	for flight in flightOrder:
+
+		flightDate = flight.departureDate
+		origin = flight.origin
+		dest = flight.destination
+		airline = flight.airline
+
+		if lastDay == None or lastDay != flightDate:
+			day+=1
+			lastDay = flightDate
+			if day%7 == 0:
+				week+=1
+
+		if week == specificWeek and isDomestic(flight) and origin != dest:
+			totalFlights +=1
+
+			airport1 = airportDict[origin]
+			airport2 = airportDict[dest]
+			if distanceBetweenTwoPoints([airport1.latitude, airport1.longitude], [airport2.latitude, airport2.longitude]) > miles:
+				flightsOverThreshold +=1
+
+	print "PERCENT OVER " + str(miles) + " MILES:"
+	print str(100*round(flightsOverThreshold/float(totalFlights), 3)) + " %"
+
+import operator
+def getMaxFlightsInWeek(specificWeek):
+
+	top3Routes = {}
+	minRoute = None
+	minRouteVal = 100000000000
+	for origin in flightLog[specificWeek]:
+		for dest in flightLog[specificWeek][origin]:
+			if len(top3Routes) < 10:
+				top3Routes[(origin, dest)] = flightLog[specificWeek][origin][dest]
+				if flightLog[specificWeek][origin][dest] < minRouteVal: 
+					minRoute = (origin, dest)
+					minRouteVal = flightLog[specificWeek][origin][dest]
+			else:
+				if flightLog[specificWeek][origin][dest] > minRouteVal:
+					top3Routes.pop(minOfDict(top3Routes))
+					top3Routes[(origin, dest)] = flightLog[specificWeek][origin][dest]
+					minRoute = minOfDict(top3Routes)
+					minRouteVal = top3Routes[minRoute]
+	print sorted(combineKeys(top3Routes).items(), key=operator.itemgetter(1))
+	return sorted(combineKeys(top3Routes).items(), key=operator.itemgetter(1))
+
 
 if __name__ == "__main__":
 	main()
@@ -748,6 +948,31 @@ if __name__ == "__main__":
 	# flightLength_februaryLeap_2day()
 	# covid_dist()
 	# print("All tests passed")
+	# printTotalWeeklyFlights()
+	# printLeadingAirlines(8)
+	# printLeadingAirlines(12)
+	# printLeadingAirlines(13)
+	# printLeadingAirlines(14)
+	# getMostPopularRoutes()
+	# percentOfFlightsOverXMiles(8, 100)
+	# percentOfFlightsOverXMiles(12, 100)
+	# percentOfFlightsOverXMiles(13, 100)
+	# percentOfFlightsOverXMiles(14, 100)
+	getMaxFlightsInWeek(8)
+	getMaxFlightsInWeek(10)
+	getMaxFlightsInWeek(12)
+	getMaxFlightsInWeek(14)
+	getMaxFlightsInWeek(16)
+	getMaxFlightsInWeek(17)
+	# print "DNV PHX w8:    " + str(flightLog[8]['KDEN']['KPHX']) + " + " + str(flightLog[8]['KPHX']['KDEN'])
+	# print "SEA PDX w8:    " + str(flightLog[8]['KSEA']['KPDX']) + " + " + str(flightLog[8]['KPDX']['KSEA'])
+	# print "LAX SFO w8:    " + str(flightLog[8]['KLAX']['KSFO']) + " + " + str(flightLog[8]['KSFO']['KLAX'])
+	# print "LAX SJC w14:    " + str(flightLog[8]['KLAX']['KSJC']) + " + " + str(flightLog[8]['KSJC']['KLAX'])
+	# print "DNV PHX w14:    " + str(flightLog[14]['KDEN']['KPHX']) + " + " + str(flightLog[14]['KPHX']['KDEN'])
+	# print "SEA PDX w14:    " + str(flightLog[14]['KSEA']['KPDX']) + " + " + str(flightLog[14]['KPDX']['KSEA'])
+	# print "LAX SFO w14:    " + str(flightLog[14]['KLAX']['KSFO']) + " + " + str(flightLog[14]['KSFO']['KLAX'])
+	# print "LAX SJC w14:    " + str(flightLog[14]['KLAX']['KSJC']) + " + " + str(flightLog[14]['KSJC']['KLAX'])
+
 
 
 

@@ -41,7 +41,7 @@ KDLH,Duluth International Airport,Duluth,MN,US,46.842,-92.194,large_airport
 KDSM,Des Moines International Airport,Des Moines,IA,US,41.534,-93.663,large_airport
 KDTW,Detroit Metropolitan Wayne County Airport,Detroit,MI,US,42.212,-83.353,large_airport
 KERI,Erie International Tom Ridge Field,Erie,PA,US,42.083,-80.174,large_airport
-KEWR,Newark Liberty International Airport,Newark,NJ,US,40.693,-74.169,large_airport
+KEWR,Newark Liberty International Airport,Newark,NJ,US,40.64,-74.25,large_airport
 KFLL,Fort Lauderdale Hollywood International Airport,Fort Lauderdale,FL,US,26.073,-80.153,large_airport
 KFSM,Fort Smith Regional Airport,Fort Smith,AR,US,35.337,-94.367,large_airport
 KFTW,Fort Worth Meacham International Airport,Fort Worth,TX,US,32.82,-97.362,large_airport
@@ -62,7 +62,7 @@ KICT,Wichita Eisenhower National Airport,Wichita,KS,US,37.65,-97.433,large_airpo
 KIND,Indianapolis International Airport,Indianapolis,IN,US,39.717,-86.294,large_airport
 KJAN,Jackson-Medgar Wiley Evers International Airport,Jackson,MS,US,32.311,-90.076,large_airport
 KJAX,Jacksonville International Airport,Jacksonville,FL,US,30.494,-81.688,large_airport
-KJFK,John F Kennedy International Airport,New York,NY,US,40.64,-73.779,large_airport
+KJFK,John F Kennedy International Airport,New York,NY,US,40.64,-73.75,large_airport
 KJLN,Joplin Regional Airport,Joplin,MO,US,37.152,-94.498,large_airport
 KLAS,McCarran International Airport,Las Vegas,NV,US,36.08,-115.152,large_airport
 KLAX,Los Angeles International Airport,Los Angeles,CA,US,33.943,-118.408,large_airport
@@ -70,7 +70,6 @@ KLBB,Lubbock Preston Smith International Airport,Lubbock,TX,US,33.664,-101.823,l
 KLCK,Rickenbacker International Airport,Columbus,OH,US,39.814,-82.928,large_airport
 KLEX,Blue Grass Airport,Lexington,KY,US,38.036,-84.606,large_airport
 KLFT,Lafayette Regional Airport,Lafayette,LA,US,30.205,-91.988,large_airport
-KLGA,La Guardia Airport,New York,NY,US,40.777,-73.873,large_airport
 KLIT,Bill & Hillary Clinton National Airport/Adams Field,Little Rock,AR,US,34.729,-92.224,large_airport
 KMBS,MBS International Airport,Saginaw,MI,US,43.533,-84.08,large_airport
 KMCI,Kansas City International Airport,Kansas City,MO,US,39.298,-94.714,large_airport
